@@ -81,6 +81,7 @@ main {
     input {
       width: 100%;
 
+      margin-left: 0.2rem;
       padding: 1rem 1rem 0.8rem;
 
       font-family: 'Poppins', sans-serif;
@@ -142,3 +143,34 @@ main {
     }
   }
 }
+
+/* Horizontal phones */
+@media screen and (width >= 667px) and (width < 916px) and (height >= 360px) and (height < 415px) {
+  main {
+    section {
+      width: 95%;
+      max-width: 600px;
+      height: 95%;
+    }
+  }
+
+  .form-container {
+    height: 50%;
+
+    form {
+      .arrow-container {
+        right: calc(0rem + 2rem);
+      }
+    }
+  }
+
+  .result-container {
+    height: 50%;
+    padding-top: 1rem;
+
+    p {
+      font-size: 3.8rem;
+    }
+  }
+}
+

@@ -1,0 +1,144 @@
+$purple: hsl(259, 100%, 65%);
+$light-red: hsl(0, 100%, 67%);
+
+$white: hsl(0, 0%, 100%);
+$off-white: hsl(0, 0%, 94%);
+$light-grey: hsl(0, 0%, 86%);
+$smokey-grey: hsl(0, 1%, 44%);
+$off-black: hsl(0, 0%, 8%);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.2rem;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $off-white;
+
+  section {
+    width: 90%;
+    height: 70%;
+
+    background-color: $white;
+    border-radius: 2rem 2rem 8rem 2rem;
+  }
+}
+
+.form-container {
+  height: 40%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  padding: 4.5rem 2rem 2rem;
+
+  form {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items:  flex-start;
+    column-gap: 2rem;
+
+    border-bottom: 0.2rem solid $light-grey;
+
+    label {
+      width: 33.33%;
+
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $smokey-grey;
+      letter-spacing: 0.2rem;
+    }
+
+    input {
+      width: 100%;
+
+      padding: 1rem 1rem 0.8rem;
+
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 0.025rem;
+
+      color: $off-black;
+      border: 0.1rem solid $light-grey;
+      border-radius: 0.4rem;
+
+      &:focus {
+        outline: none;
+        border: 0.1px solid $purple;
+      }
+    }
+
+    .arrow-container {
+      width: 6rem;
+      height: 6rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: absolute;
+      bottom: calc(0rem - 1rem);
+
+      border-radius: 50%;
+      background-color: $purple;
+
+      &:hover {
+        background-color: $off-black;
+      }
+
+      img {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.result-container {
+  height: 60%;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2rem;
+
+  p {
+    font-size: 5rem;
+    font-weight: 800;
+    font-style: italic;
+
+    span {
+      color: $purple;
+    }
+  }
+}

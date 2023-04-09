@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,800;1,400;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles.scss">
   <title>Age calculator app</title>
 </head>
 <body>
@@ -26,13 +27,12 @@
 
             <label for="year">
               <span>YEAR</span>
-              <input type="number" id="year" pattern="[0-9]{4}" placeholder="YYYY"/>
+              <input type="number" id="year" min="0" pattern="[0-9]{4}" placeholder="YYYY"/>
             </label>
-
-            <figure class="arrow-container">
-              <img src="../assets/images/icon-arrow.svg" alt="icon-submit">
-            </figure>
           </form>
+          <button class="arrow-container">
+            <img src="./assets/images/icon-arrow.svg" alt="icon-submit">
+          </button>
         </div>
         <div class="result-container">
           <p><span>--</span> years</p>
@@ -41,17 +41,6 @@
         </div>
       </section>
   </main>
-  <!--Day
-  DD
-
-  Month
-  MM
-
-  Year
-  YYYY
-
-  &#45;&#45; years
-  &#45;&#45; months
-  &#45;&#45; days-->
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>

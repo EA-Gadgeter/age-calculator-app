@@ -98,28 +98,29 @@ main {
         border: 0.1px solid $purple;
       }
     }
+  }
 
-    .arrow-container {
-      width: 6rem;
-      height: 6rem;
+  .arrow-container {
+    width: 6rem;
+    height: 6rem;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      position: absolute;
-      bottom: calc(0rem - 1rem);
+    position: absolute;
+    bottom: calc(0rem - 1rem);
 
-      border-radius: 50%;
-      background-color: $purple;
+    border: none;
+    border-radius: 50%;
+    background-color: $purple;
 
-      &:hover {
-        background-color: $off-black;
-      }
+    &:hover {
+      background-color: $off-black;
+    }
 
-      img {
-        width: 50%;
-      }
+    img {
+      width: 50%;
     }
   }
 }
@@ -145,7 +146,7 @@ main {
 }
 
 /* Horizontal phones */
-@media screen and (width >= 667px) and (width < 916px) and (height >= 360px) and (height < 415px) {
+@media screen and (width >= 667px) and (width < 916px) and (height >= 360px) and (height < 541px) {
   main {
     section {
       width: 95%;
@@ -157,19 +158,103 @@ main {
   .form-container {
     height: 50%;
 
+    padding: 4rem;
+
     form {
-      .arrow-container {
-        right: calc(0rem + 2rem);
+      justify-content: flex-start;
+
+      label {
+        width: 23.33%;
       }
+    }
+
+    .arrow-container {
+      bottom: calc(0rem + 1rem);
+      right: calc(0rem + 4rem);
     }
   }
 
   .result-container {
     height: 50%;
-    padding-top: 1rem;
+    padding: 0 4rem 4rem;
 
     p {
       font-size: 3.8rem;
+    }
+  }
+}
+
+// Vertical tablets
+@media screen and (width >= 540px) and (width <= 912px) and (height >= 720px) and (height <= 1368px) {
+  main {
+    section {
+      max-width: 500px;
+      max-height: 575px;
+    }
+  }
+
+  .form-container {
+    form {
+      span {
+        font-size: 1.6rem;
+      }
+
+      input {
+        font-size: 2.2rem;
+      }
+    }
+  }
+
+  .result-container {
+    p {
+      font-size: 5rem;
+    }
+  }
+}
+
+// Dekstop and horizontal tablets
+@media screen and (width >= 1024px) and (height >= 600px) {
+  main {
+    section {
+      width: 70%;
+      height: 80%;
+      max-width: 600px;
+      max-height: 480px;
+
+      border-radius: 2rem 2rem 12rem 2rem;
+    }
+  }
+
+  .form-container {
+    padding: 4rem;
+
+    form {
+      justify-content: flex-start;
+  
+      label {
+        width: 23.33%;
+      }
+
+      span {
+        font-size: 1.6rem;
+      }
+
+      input {
+        font-size: 2.2rem;
+      }
+    }
+
+    .arrow-container {
+      bottom: calc(0rem + 1rem);
+      right: calc(0rem + 4rem);
+    }
+  } 
+
+  .result-container {
+    padding:  0 4rem 4rem;
+
+    p {
+      font-size: 6rem;
     }
   }
 }

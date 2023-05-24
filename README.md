@@ -33,15 +33,15 @@ Users should be able to:
 ### Screenshots
 
 #### Desktop Version
-!["Desktop Version"]("./screenshots/desktop.png")
+!["Desktop Version"](./screenshots/desktop.png)
 
 #### Mobile Version
-!["Mobile Version"]("./screenshots/mobile.png")
+!["Mobile Version"](./screenshots/mobile.png)
 
 ### Links
 
-- Solution URL: [GitHub Repository]("https://github.com/EA-Gadgeter/age-calculator-app")
-- [Live Solution URL]("https://ea-gadgeter.github.io/age-calculator-app/")
+- Solution URL: [GitHub Repository](https://github.com/EA-Gadgeter/age-calculator-app)
+- [Live Solution URL](https://ea-gadgeter.github.io/age-calculator-app/)
 
 ## My process
 
@@ -144,5 +144,5 @@ dayResult.textContent = days;
 
 ## Author
 
-- Website - [Gadgeter]("https://ea-gadgeter.github.io/Web-Portafolio")
-- Frontend Mentor - [@EA-Gadgeter]("https://www.frontendmentor.io/profile/EA-Gadgeter")
+- Website - [Gadgeter](https://ea-gadgeter.github.io/Web-Portafolio)
+- Frontend Mentor - [@EA-Gadgeter](https://www.frontendmentor.io/profile/EA-Gadgeter)

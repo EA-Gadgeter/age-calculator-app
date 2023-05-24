@@ -18,6 +18,7 @@
 node_modules
 .idea
 design
+dist
 
 README.md
 style-guide.md

@@ -3,44 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,800;1,400;1,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./src/styles.scss">
+  <link rel="stylesheet" href="/src/styles.scss">
   <title>Age calculator app</title>
 </head>
 <body>
   <main>
       <section>
         <div class="form-container">
-          <form>
-            <label for="day">
+          <form id="ageForm">
+            <label for="day" id="dayLabel">
               <span>DAY</span>
-              <input type="number" id="day" min="1" max="31" placeholder="DD"/>
+              <input type="number" id="day" placeholder="DD" required min="01" max="31"/>
+              <p class="invalid-message hidden">The field is required</p>
             </label>
 
-            <label for="month">
+            <label for="month" id="monthLabel">
               <span>MONTH</span>
-              <input type="number" id="month" min="01" max="12" placeholder="MM"/>
+              <input type="number" id="month" placeholder="MM" required min="01" max="12"/>
+              <p class="invalid-message hidden">The field is required</p>
             </label>
 
-            <label for="year">
+            <label for="year" id="yearLabel">
               <span>YEAR</span>
-              <input type="number" id="year" min="0" pattern="[0-9]{4}" placeholder="YYYY"/>
+              <input type="text" id="year" placeholder="YYYY" required pattern="[0-9]{4}"/>
+              <p class="invalid-message hidden">The field is required</p>
             </label>
           </form>
-          <button class="arrow-container">
+          <button class="arrow-container" form="ageForm">
             <img src="./assets/images/icon-arrow.svg" alt="icon-submit">
           </button>
         </div>
         <div class="result-container">
-          <p><span>--</span> years</p>
-          <p><span>--</span> months</p>
-          <p><span>--</span> days</p>
+          <p><span id="yearResult">--</span> years</p>
+          <p><span id="monthResult">--</span> months</p>
+          <p><span id="dayResult">--</span> days</p>
         </div>
       </section>
   </main>
-  <script type="module" src="./src/main.js"></script>
+  <script type="module" src="src/index.js"></script>
 </body>
 </html>

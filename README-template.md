@@ -1,22 +1,18 @@
-# Frontend Mentor - Age calculator app solution
+# Frontend Mentor - Gadgeter's Age calculator app solution
 
-This is a solution to the [Age calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Age calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q). 
+Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
 ## Table of contents
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
+  - [Screenshot](#screenshots)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -33,87 +29,120 @@ Users should be able to:
   - The date is invalid e.g. 31/04/1991 (there are 30 days in April)
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
-- **Bonus**: See the age numbers animate to their final number when the form is submitted
 
-### Screenshot
+### Screenshots
 
-![](./screenshot.jpg)
+#### Desktop Version
+!["Desktop Version"]("./screenshots/desktop.png")
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+#### Mobile Version
+!["Mobile Version"]("./screenshots/mobile.png")
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repository]("https://github.com/EA-Gadgeter/age-calculator-app")
+- [Live Solution URL]("https://your-live-site-url.com")
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
+- Vite
+- SASS/SCSS
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Vanilla JS
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This challenge really helped me to practice and learn about constraint API for validating forms.
+Also taught me how to manage dates correctly in JavaScript.
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+This is how I validate that a date is... valid:
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+const date = new Date(`${yearInput.value}-${monthInput.value}-${dayInput.value}`);
+// Need to use UTC for avoiding TimeZone to subtract and hour, because time isn't specified in Date constructor
+// if we don't use UTC, date may have one less day
+const year = date.getUTCFullYear();
+const month = date.getUTCMonth() + 1; // JavaScript´s months are 0-based
+const day = date.getUTCDate();
+
+let isValid = true;
+
+/* 
+    Above, if we pass a no-existing data like "2023-04-31"
+    Date constructor will transform it to the next valid date,
+    that is to say, ANOTHER date, so if the input values are not
+    equal to the JS date, then the submitted inputs are invalid.
+*/
+const isValidDate = year == yearInput.value && month == monthInput.value && day == dayInput.value;
+
+if(!isValidDate) {
+  dayInputMessage.textContent = messages.validDate;
+  dayInputMessage.classList.remove("hidden");
+
+  // Based in the design, we only show the message in the day input,
+  // so we hide other inputs messages
+  monthInputMessage.classList.add("hidden");
+  yearInputMessage.classList.add("hidden");
+
+  dayInput.classList.add("invalid-input");
+  dayInputLabel.classList.add("invalid-input");
+
+  // ...but we still need to outline the other inputs
+  monthInput.classList.add("invalid-input");
+  monthInputLabel.classList.add("invalid-input");
+
+  yearInput.classList.add("invalid-input");
+  yearInputLabel.classList.add("invalid-input");
+
+  isValid = false;
+
+  yearResult.textContent = "--";
+  monthResult.textContent = "--";
+  dayResult.textContent = '--';
 }
+
+return isValid;
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+This is how calculate I calculate the day:
+```js
+// Creating date from user input, and today's date
+const userBirth = new Date(`${yearInput.value}-${monthInput.value}-${dayInput.value}`);
+const todayDate = new Date();
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+/* No need of adding +1 to the month later is necessary, above JS already indexes
+the months, so when making the subtraction below, the quantity of months is correctly
+calculated */
+let years = todayDate.getFullYear() - userBirth.getUTCFullYear();
+let months = todayDate.getMonth() - userBirth.getUTCMonth();
+let days = todayDate.getDate() - userBirth.getUTCDate();
 
-### Continued development
+// There are a few days left before we reach the birthday day,
+// so we decrease the months in one, we need to get the number of the days of the
+// previous month, and add it to get the correct amount of days
+if (days < 0) {
+    months--;
+    const daysPreviousMonth = new Date(todayDate.getFullYear(), todayDate.getMonth(), 0).getDate();
+    days += daysPreviousMonth;
+}
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+// We haven't completed year for the next birthday, so we decrease years in 1, and add 12 to months,
+// so they aren't negative
+if (months < 0) {
+    years--;
+    months += 12;
+}
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+yearResult.textContent = years;
+monthResult.textContent = months;
+dayResult.textContent = days;
+```
 
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+**Check my GitHub repository of the challenge to get full context of the code.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Website - [Gadgeter]("https://ea-gadgeter.github.io/Web-Portafolio")
+- Frontend Mentor - [@EA-Gadgeter]("https://www.frontendmentor.io/profile/EA-Gadgeter")

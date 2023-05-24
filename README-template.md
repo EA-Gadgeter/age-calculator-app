@@ -51,7 +51,7 @@ Users should be able to:
 - Vite
 - SASS/SCSS
 - Mobile-first workflow
-- Vanilla JS
+- Vanilla JS / DOM Manipulation
 
 ### What I learned
 
